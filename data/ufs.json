@@ -1,0 +1,413 @@
+{
+    "BR": {
+        "nome": "Brasil",
+        "cod": 1,
+        "area": 8510295.914,
+        "capital": "Brasília",
+        "extinto": false,
+        "gentilico": ["brasileiro", "brasileira"],
+        "lema": "Ordem e Progresso",
+        "regiao": null,
+        "coordenadas": null
+    },
+    "AC": {
+        "nome": "Acre",
+        "cod": 12,
+        "area": 164122.2,
+        "capital": "Rio Branco",
+        "extinto": false,
+        "gentilico": ["acriano", "acriana", "acreano", "acreana"],
+        "lema": "Nec Luceo Pluribus Impar",
+        "regiao": "Norte",
+        "coordenadas": {
+            "latitude": -8.77,
+            "longitude": -70.55
+        }
+    },
+    "AL": {
+        "nome": "Alagoas",
+        "cod": 27,
+        "area": 27767.7,
+        "capital": "Maceió",
+        "extinto": false,
+        "gentilico": ["alagoano", "alagoana"],
+        "lema": "Ad Bonum Et Prosperitatem",
+        "regiao": "Nordeste",
+        "coordenadas": {
+            "latitude": -9.62,
+            "longitude": -36.82
+        }
+    },
+    "AM": {
+        "nome": "Amazonas",
+        "cod": 13,
+        "area": 1570745.7,
+        "capital": "Manaus",
+        "extinto": false,
+        "gentilico": ["amazonense"],
+        "lema": null,
+        "regiao": "Norte",
+        "coordenadas": {
+            "latitude": -3.47,
+            "longitude": -65.10
+        }
+    },
+    "AP": {
+        "nome": "Amapá",
+        "cod": 16,
+        "area": 142814.6,
+        "capital": "Macapá",
+        "extinto": false,
+        "gentilico": ["amapaense"],
+        "lema": "Aqui começa o Brasil",
+        "regiao": "Norte",
+        "coordenadas": {
+            "latitude": 1.41,
+            "longitude": -51.77
+        }
+    },
+    "BA": {
+        "nome": "Bahia",
+        "cod": 29,
+        "area": 564692.7,
+        "capital": "Salvador",
+        "extinto": false,
+        "gentilico": ["baiano, baiana"],
+        "lema": "Per Ardua Surgo",
+        "regiao": "Nordeste",
+        "coordenadas": {
+            "latitude": -13.29,
+            "longitude": -41.71
+        }
+    },
+    "CE": {
+        "nome": "Ceará",
+        "cod": 23,
+        "area": 148825.6,
+        "capital": "Fortaleza",
+        "extinto": false,
+        "gentilico": ["cearense"],
+        "lema": "Terra da Luz",
+        "regiao": "Nordeste",
+        "coordenadas": {
+            "latitude": -5.20,
+            "longitude": -39.53
+        }
+    },
+    "DF": {
+        "nome": "Distrito Federal",
+        "cod": 53,
+        "area": 5822.1,
+        "capital": "Brasília",
+        "extinto": false,
+        "gentilico": ["brasiliense", "candango"],
+        "lema": "Ventvris Ventis",
+        "regiao": "Centro-Oeste",
+        "coordenadas": {
+            "latitude": -15.83,
+            "longitude": -47.86
+        }
+    },
+    "ES": {
+        "nome": "Espirito Santo",
+        "cod": 32,
+        "area": 46077.5,
+        "capital": "Vitória",
+        "extinto": false,
+        "gentilico": ["capixaba", "espírito-santense"],
+        "lema": "Trabalha e Confia",
+        "regiao": "Sudeste",
+        "coordenadas": {
+            "latitude": -19.19,
+            "longitude": -40.34
+        }
+    },
+    "FN": {
+        "nome": "Fernando de Noronha",
+        "cod": 20,
+        "area": 18.609,
+        "capital": "Fernando de Noronha",
+        "extinto": true,
+        "gentilico": ["noronhense"],
+        "lema": null,
+        "regiao": "Nordeste",
+        "coordenadas": null
+    },
+    "GB": {
+        "nome": "Guanabara",
+        "cod": 34,
+        "area": 1356,
+        "capital": "Rio de Janeiro",
+        "extinto": true,
+        "gentilico": null,
+        "lema": null,
+        "regiao": "Sudeste",
+        "coordenadas": null
+    },
+    "GO": {
+        "nome": "Goiás",
+        "cod": 52,
+        "area": 340086.7,
+        "capital": "Goiânia",
+        "extinto": false,
+        "gentilico": ["goiano", "goiana"],
+        "lema": "Terra Querida, Fruto da Vida",
+        "regiao": "Centro-Oeste",
+        "coordenadas": {
+            "latitude": -15.98,
+            "longitude": -49.86
+        }
+    },
+    "MA": {
+        "nome": "Maranhão",
+        "cod": 21,
+        "area": 331983.3,
+        "capital": "São Luís",
+        "extinto": false,
+        "gentilico": ["maranhense"],
+        "lema": null,
+        "regiao": "Nordeste",
+        "coordenadas": {
+            "latitude": -5.42,
+            "longitude": -45.44
+        }
+    },
+    "MG": {
+        "nome": "Minas Gerais",
+        "cod": 31,
+        "area": 586528.3,
+        "capital": "Belo Horizonte",
+        "extinto": false,
+        "gentilico": ["mineiro", "mineira"],
+        "lema": "Libertas Quæ Sera Tamen",
+        "regiao": "Sudeste",
+        "coordenadas": {
+            "latitude": -18.10,
+            "longitude": -44.38
+        }
+    },
+    "MT": {
+        "nome": "Mato Grosso",
+        "cod": 51,
+        "area": 903357.9,
+        "capital": "Cuiabá",
+        "extinto": false,
+        "gentilico": ["mato-grossense"],
+        "lema": "Virtute Plusquam Auro",
+        "regiao": "Centro-Oeste",
+        "coordenadas": {
+            "latitude": -12.64,
+            "longitude": -55.42
+        }
+    },
+    "MS": {
+        "nome": "Mato Grosso do Sul",
+        "cod": 50,
+        "area": 357125.0,
+        "capital": "Campo Grande",
+        "extinto": false,
+        "gentilico": ["sul-mato-grossense", "mato-grossense-do-sul"],
+        "lema": null,
+        "regiao": "Centro-Oeste",
+        "coordenadas": {
+            "latitude": -20.51,
+            "longitude": -54.54
+        }
+    },
+    "PA": {
+        "nome": "Pará",
+        "cod": 15,
+        "area": 1247689.5,
+        "capital": "Belém",
+        "extinto": false,
+        "gentilico": ["paraense"],
+        "lema": null,
+        "regiao": "Norte",
+        "coordenadas": {
+            "latitude": -3.79,
+            "longitude": -52.48
+        }
+    },
+    "PB": {
+        "nome": "Paraíba",
+        "cod": 25,
+        "area": 56439.8,
+        "capital": "João Pessoa",
+        "extinto": false,
+        "gentilico": ["paraibano", "paraibana"],
+        "lema": null,
+        "regiao": "Nordeste",
+        "coordenadas": {
+            "latitude": -7.28,
+            "longitude": -36.72
+        }
+    },
+    "PE": {
+        "nome": "Pernambuco",
+        "cod": 26,
+        "area": 98311.6,
+        "capital": "Recife",
+        "extinto": false,
+        "gentilico": ["pernambucano", "pernambucana"],
+        "lema": "Ego Sum Qui Fortissimum Et Leads",
+        "regiao": "Nordeste",
+        "coordenadas": {
+            "latitude": -8.38,
+            "longitude": -37.86
+        }
+    },
+    "PI": {
+        "nome": "Piauí",
+        "cod": 22,
+        "area": 251529.2,
+        "capital": "Teresina",
+        "extinto": false,
+        "gentilico": ["piauiense"],
+        "lema": "Impavidum Ferient Ruinae",
+        "regiao": "Nordeste",
+        "coordenadas": {
+            "latitude": -6.60,
+            "longitude": -42.28
+        }
+    },
+    "PR": {
+        "nome": "Paraná",
+        "cod": 41,
+        "area": 199314.9,
+        "capital": "Curitiba",
+        "extinto": false,
+        "gentilico": ["paranaense"],
+        "lema": null,
+        "regiao": "Sul",
+        "coordenadas": {
+            "latitude": -24.89,
+            "longitude": -51.55
+        }
+    },
+    "RJ": {
+        "nome": "Rio de Janeiro",
+        "cod": 33,
+        "area": 43696.1,
+        "capital": "Rio de Janeiro",
+        "extinto": false,
+        "gentilico": ["fluminense"],
+        "lema": "Recete Rem Pvblicam Gerere",
+        "regiao": "Sudeste",
+        "coordenadas": {
+            "latitude": -22.25,
+            "longitude": -42.66
+        }
+    },
+    "RO": {
+        "nome": "Rondônia",
+        "cod": 11,
+        "area": 237576.2,
+        "capital": "Porto Velho",
+        "extinto": false,
+        "gentilico": ["rondoniense", "rondoniano", "rondoniana"],
+        "lema": null,
+        "regiao": "Norte",
+        "coordenadas": {
+            "latitude": -10.83,
+            "longitude": -63.34
+        }
+    },
+    "RN": {
+        "nome": "Rio Grande do Norte",
+        "cod": 24,
+        "area": 52796.8,
+        "capital": "Natal",
+        "extinto": false,
+        "gentilico": ["potiguar", "norte-rio-grandense", "rio-grandense-do-norte"],
+        "lema": null,
+        "regiao": "Nordeste",
+        "coordenadas": {
+            "latitude": -5.81,
+            "longitude": -36.59
+        }
+    },
+    "RR": {
+        "nome": "Roraima",
+        "cod": 14,
+        "area": 224299.0,
+        "capital": "Boa Vista",
+        "extinto": false,
+        "gentilico": ["roraimense"],
+        "lema": "Amazônia: Patrimônio dos Brasileiros",
+        "regiao": "Norte",
+        "coordenadas": {
+            "latitude": 1.99,
+            "longitude": -61.33
+        }
+    },
+    "RS": {
+        "nome": "Rio Grande do Sul",
+        "cod": 43,
+        "area": 281748.5,
+        "capital": "Porto Alegre",
+        "extinto": false,
+        "gentilico": ["gaúcho", "gaúcha", "sul-rio-grandense", "rio-grandense-do-sul"],
+        "lema": "Liberdade, Igualdade, Humanidade",
+        "regiao": "Sul",
+        "coordenadas": {
+            "latitude": -30.17,
+            "longitude": -53.50
+        }
+    },
+    "SC": {
+        "nome": "Santa Catarina",
+        "cod": 42,
+        "area": 95346.2,
+        "capital": "Florianópolis",
+        "extinto": false,
+        "gentilico": ["catarinense", "barriga-verde"],
+        "lema": null,
+        "regiao": "Sul",
+        "coordenadas": {
+            "latitude": -27.45,
+            "longitude": -50.95
+        }
+    },
+    "SE": {
+        "nome": "Sergipe",
+        "cod": 28,
+        "area": 21910.3,
+        "capital": "Aracaju",
+        "extinto": false,
+        "gentilico": ["sergipano", "sergipana", "sergipense", "serigy", "aperipê"],
+        "lema": "Sub Lege Libertas",
+        "regiao": "Nordeste",
+        "coordenadas": {
+            "latitude": -10.57,
+            "longitude": -37.45
+        }
+    },
+    "SP": {
+        "nome": "São Paulo",
+        "cod": 35,
+        "area": 248209.4,
+        "capital": "São Paulo",
+        "extinto": false,
+        "gentilico": ["paulista"],
+        "lema": "Pro Brasilia Fiant Eximia",
+        "regiao": "Sudeste",
+        "coordenadas": {
+            "latitude": -22.19,
+            "longitude": -48.79
+        }
+    },
+    "TO": {
+        "nome": "Tocantins",
+        "cod": 17,
+        "area": 277620.9,
+        "capital": "Palmas",
+        "extinto": false,
+        "gentilico": ["tocantinense"],
+        "lema": "Co Yvy Ore Retama",
+        "regiao": "Norte",
+        "coordenadas": {
+            "latitude": -9.46,
+            "longitude": -48.26
+        }
+    }
+}
