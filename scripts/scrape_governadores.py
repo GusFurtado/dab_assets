@@ -1,6 +1,7 @@
 from datetime import date
-
+from pathlib import Path
 import json
+
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
@@ -15,7 +16,6 @@ class ScrapeGovernadores:
         "No cargo": "periodo",
         "Partido": "partido",
         "Mandato (ano da eleição)": "ano_eleicao",
-        #'Cargo anterior': 'cargo_anterior',
         "Vice-governador": "vice_governador",
     }
 
@@ -74,7 +74,6 @@ class ScrapeGovernadores:
         df.ano_eleicao = df.ano_eleicao.apply(lambda x: x.split("(")[-1].split(")")[0])
         df.ano_eleicao = df.ano_eleicao.apply(lambda x: None if x == "1" else int(x))
         df.vice_governador = df.vice_governador.apply(self.apply_vice)
-        # df.cargo_anterior = df.cargo_anterior.str.replace("(", " (")
 
         return df[
             [
@@ -85,7 +84,6 @@ class ScrapeGovernadores:
                 "mandato_fim",
                 "partido",
                 "partido_sigla",
-                #'cargo_anterior',
                 "vice_governador",
             ]
         ]
@@ -99,9 +97,20 @@ class ScrapeGovernadores:
         df = self.get()
         df = self.transform(df)
         self.save(df)
+        return df
+
+
+def validar():
+    file = Path("data/governadores.json")
+    assert file.is_file()
+
+    with open(file, "r") as opened_file:
+        return json.load(opened_file)
 
 
 if __name__ == "__main__":
     obj = ScrapeGovernadores()
     obj.exec()
-    print("Feito!")
+
+    data = validar()
+    print(data)
