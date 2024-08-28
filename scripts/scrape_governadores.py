@@ -56,7 +56,7 @@ class ScrapeGovernadores:
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         df["Unidade federativa"] = df["Unidade federativa"].apply(
-            lambda x: x.split("(")[0]
+            lambda x: x.split("(")[0].strip()
         )
         df = df[list(self.COLS.keys())].copy()
         df.rename(columns=self.COLS, inplace=True)
