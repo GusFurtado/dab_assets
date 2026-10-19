@@ -3,8 +3,8 @@ from collections import Counter
 from dab_wiki.datasets.tribunais import CADEIRAS, Tribunais
 
 
-def test_extrair(paginas):
-    ministros = Tribunais().gerar(paginas("tribunais")).dados
+def test_extrair(brutos):
+    ministros = Tribunais().gerar(brutos("tribunais")).dados
     contagem = Counter(m.tribunal for m in ministros)
     assert set(contagem) == set(CADEIRAS)
     assert all(contagem[t] <= n for t, n in CADEIRAS.items())

@@ -3,8 +3,8 @@ from datetime import date
 from dab_wiki.datasets.partidos import Partidos
 
 
-def test_extrair(paginas):
-    partidos = Partidos().gerar(paginas("partidos")).dados
+def test_extrair(brutos):
+    partidos = Partidos().gerar(brutos("partidos")).dados
     ativos = {p.sigla: p for p in partidos if p.ativo}
     assert ativos["PT"].numero == 13
     assert ativos["PT"].data_registro == date(1982, 2, 11)

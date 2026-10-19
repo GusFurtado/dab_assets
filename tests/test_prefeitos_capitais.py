@@ -3,8 +3,8 @@ from datetime import date
 from dab_wiki.datasets.prefeitos_capitais import PrefeitosCapitais
 
 
-def test_extrair(paginas):
-    por_uf = {p.uf: p for p in PrefeitosCapitais().gerar(paginas("prefeitos_capitais")).dados}
+def test_extrair(brutos):
+    por_uf = {p.uf: p for p in PrefeitosCapitais().gerar(brutos("prefeitos_capitais")).dados}
     assert len(por_uf) == 26
     assert "DF" not in por_uf
     sp = por_uf["SP"]

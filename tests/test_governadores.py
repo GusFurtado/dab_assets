@@ -3,8 +3,8 @@ from datetime import date
 from dab_wiki.datasets.governadores import Governadores, partido, vice_atual
 
 
-def test_extrair(paginas):
-    arquivo = Governadores().gerar(paginas("governadores"))
+def test_extrair(brutos):
+    arquivo = Governadores().gerar(brutos("governadores"))
     por_uf = {g.uf: g for g in arquivo.dados}
     assert len(por_uf) == 27
     assert por_uf["AC"].nome == "Mailza Assis"

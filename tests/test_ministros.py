@@ -3,8 +3,8 @@ from datetime import date
 from dab_wiki.datasets.ministros import Ministros, partido_uf
 
 
-def test_extrair(paginas):
-    ministros = Ministros().gerar(paginas("ministros")).dados
+def test_extrair(brutos):
+    ministros = Ministros().gerar(brutos("ministros")).dados
     atuais = {m.orgao: m for m in ministros if m.em_exercicio}
     assert atuais["Fazenda"].nome == "Dario Durigan"
     assert atuais["Fazenda"].posse == date(2026, 3, 19)

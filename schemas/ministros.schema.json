@@ -7,18 +7,37 @@
           "title": "Titulo",
           "type": "string"
         },
-        "revid": {
-          "title": "Revid",
-          "type": "integer"
-        },
         "url": {
           "title": "Url",
           "type": "string"
+        },
+        "revid": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Revid"
+        },
+        "consulta": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Consulta"
         }
       },
       "required": [
         "titulo",
-        "revid",
         "url"
       ],
       "title": "Fonte",
