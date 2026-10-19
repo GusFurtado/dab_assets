@@ -1,4 +1,4 @@
-"""Linha de comando: `dab-wiki atualizar|validar|schemas|fixture`."""
+"""Linha de comando: `dab-wiki atualizar|validar|schemas|fixture|listar`."""
 
 import argparse
 import gzip
@@ -42,7 +42,7 @@ def atualizar(nomes: list[str], resumo: Path | None) -> int:
             erros += 1
             print(f"{nome}: ERRO\n{traceback.format_exc()}", file=sys.stderr)
             partes.append(f"### `{nome}`: ERRO\n\n```\n{type(e).__name__}: {e}\n```\n")
-    if resumo and partes:
+    if resumo:
         resumo.write_text("\n".join(partes), encoding="utf-8")
     return 1 if erros else 0
 
@@ -76,6 +76,11 @@ def fixture(nomes: list[str]) -> int:
     return 0
 
 
+def listar(nomes: list[str]) -> int:
+    print(json.dumps(nomes))
+    return 0
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(prog="dab-wiki")
     sub = parser.add_subparsers(dest="comando", required=True)
@@ -84,6 +89,7 @@ def main() -> None:
         ("validar", "valida os arquivos em data/ contra os modelos"),
         ("schemas", "gera schemas/*.schema.json a partir dos modelos"),
         ("fixture", "salva o HTML atual das páginas em tests/fixtures/"),
+        ("listar", "imprime os nomes dos datasets em JSON (para a matriz do GitHub Actions)"),
     ]:
         p = sub.add_parser(comando, help=ajuda)
         p.add_argument("datasets", nargs="*", choices=[[], *DATASETS], help="padrão: todos")
@@ -93,7 +99,7 @@ def main() -> None:
     nomes = args.datasets or list(DATASETS)
     if args.comando == "atualizar":
         sys.exit(atualizar(nomes, args.resumo))
-    sys.exit({"validar": validar, "schemas": schemas, "fixture": fixture}[args.comando](nomes))
+    sys.exit({"validar": validar, "schemas": schemas, "fixture": fixture, "listar": listar}[args.comando](nomes))
 
 
 if __name__ == "__main__":

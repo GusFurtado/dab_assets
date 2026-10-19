@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "[0-9]+.[0-9]+.[0-9]+"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Instalar dependências
+        run: uv sync --locked
+
+      - name: ruff
+        run: |
+          uv run ruff check --output-format github .
+          uv run ruff format --check .
+
+      - name: Testes offline
+        run: uv run pytest
+
+      - name: Validar data/
+        run: uv run dab-wiki validar
+
+      - name: Schemas atualizados
+        run: |
+          uv run dab-wiki schemas
+          git diff --exit-code schemas/ || {
+            echo "::error::schemas/ desatualizado: rode 'uv run dab-wiki schemas' e faça commit."
+            exit 1
+          }

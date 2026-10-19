@@ -1,0 +1,93 @@
+name: Atualizar dados
+
+# Agendamentos só rodam no branch padrão do repositório.
+on:
+  schedule:
+    - cron: "17 9 * * 1"  # segundas, 06:17 em Brasília
+  workflow_dispatch:
+    inputs:
+      datasets:
+        description: "Datasets separados por espaço (vazio = todos)"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: atualizar-${{ github.ref }}
+
+jobs:
+  listar:
+    runs-on: ubuntu-latest
+    outputs:
+      datasets: ${{ steps.listar.outputs.datasets }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - id: listar
+        run: echo "datasets=$(uv run dab-wiki listar ${{ inputs.datasets }})" >> "$GITHUB_OUTPUT"
+
+  atualizar:
+    needs: listar
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 2  # a Wikipedia limita requisições anônimas
+      matrix:
+        dataset: ${{ fromJSON(needs.listar.outputs.datasets) }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TITULO_ISSUE: "Scraper quebrado: ${{ matrix.dataset }}"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Raspar e validar
+        id: raspar
+        run: uv run dab-wiki atualizar ${{ matrix.dataset }} --resumo "$RUNNER_TEMP/resumo.md"
+
+      - name: Abrir PR com as mudanças
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: bot/${{ matrix.dataset }}-${{ github.ref_name }}
+          base: ${{ github.ref_name }}
+          add-paths: data/${{ matrix.dataset }}.json
+          commit-message: "Atualizar ${{ matrix.dataset }}"
+          title: "Atualizar ${{ matrix.dataset }}"
+          body-path: ${{ runner.temp }}/resumo.md
+          labels: dados
+          delete-branch: true
+
+      - name: Fechar issue de falha anterior
+        if: success()
+        run: |
+          for n in $(gh issue list --label scraper-quebrado --state open --search "in:title \"$TITULO_ISSUE\"" --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "Voltou a funcionar em ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          done
+
+      - name: Abrir ou atualizar issue de falha
+        if: failure()
+        run: |
+          {
+            echo "O scraper de \`${{ matrix.dataset }}\` falhou em ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}."
+            echo
+            [ -f "$RUNNER_TEMP/resumo.md" ] && cat "$RUNNER_TEMP/resumo.md"
+          } > "$RUNNER_TEMP/falha.md"
+          n=$(gh issue list --label scraper-quebrado --state open --search "in:title \"$TITULO_ISSUE\"" --json number --jq '.[0].number')
+          if [ -n "$n" ]; then
+            gh issue comment "$n" --body-file "$RUNNER_TEMP/falha.md"
+          else
+            gh issue create --title "$TITULO_ISSUE" --label scraper-quebrado --body-file "$RUNNER_TEMP/falha.md"
+          fi
+
+  manter-ativo:
+    # O GitHub desativa agendamentos após 60 dias sem atividade no repositório; reativar zera o prazo.
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/atualizar.yml/enable"
+        env:
+          GH_TOKEN: ${{ github.token }}
