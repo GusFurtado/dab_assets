@@ -1,0 +1,210 @@
+{
+  "$defs": {
+    "Fonte": {
+      "additionalProperties": false,
+      "properties": {
+        "titulo": {
+          "title": "Titulo",
+          "type": "string"
+        },
+        "revid": {
+          "title": "Revid",
+          "type": "integer"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "titulo",
+        "revid",
+        "url"
+      ],
+      "title": "Fonte",
+      "type": "object"
+    },
+    "MinistroTribunal": {
+      "additionalProperties": false,
+      "properties": {
+        "tribunal": {
+          "enum": [
+            "STF",
+            "STJ",
+            "TST",
+            "STM",
+            "TCU"
+          ],
+          "title": "Tribunal",
+          "type": "string"
+        },
+        "nome": {
+          "minLength": 1,
+          "title": "Nome",
+          "type": "string"
+        },
+        "artigo": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Artigo"
+        },
+        "posse": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Posse"
+        },
+        "ano_aposentadoria_compulsoria": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Ano Aposentadoria Compulsoria"
+        },
+        "indicado_por": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Indicado Por"
+        },
+        "vaga": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Vaga"
+        },
+        "uf_origem": {
+          "anyOf": [
+            {
+              "enum": [
+                "AC",
+                "AL",
+                "AP",
+                "AM",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MT",
+                "MS",
+                "MG",
+                "PA",
+                "PB",
+                "PR",
+                "PE",
+                "PI",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SP",
+                "SE",
+                "TO"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Uf Origem"
+        }
+      },
+      "required": [
+        "tribunal",
+        "nome",
+        "artigo",
+        "posse",
+        "ano_aposentadoria_compulsoria",
+        "indicado_por",
+        "vaga",
+        "uf_origem"
+      ],
+      "title": "MinistroTribunal",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "dataset": {
+      "title": "Dataset",
+      "type": "string"
+    },
+    "descricao": {
+      "title": "Descricao",
+      "type": "string"
+    },
+    "licenca": {
+      "default": "CC BY-SA 4.0 (conteúdo derivado da Wikipedia)",
+      "title": "Licenca",
+      "type": "string"
+    },
+    "gerado_em": {
+      "format": "date-time",
+      "title": "Gerado Em",
+      "type": "string"
+    },
+    "fontes": {
+      "items": {
+        "$ref": "#/$defs/Fonte"
+      },
+      "title": "Fontes",
+      "type": "array"
+    },
+    "dados": {
+      "items": {
+        "$ref": "#/$defs/MinistroTribunal"
+      },
+      "minItems": 1,
+      "title": "Dados",
+      "type": "array"
+    }
+  },
+  "required": [
+    "dataset",
+    "descricao",
+    "gerado_em",
+    "fontes",
+    "dados"
+  ],
+  "title": "ArquivoMinistroTribunal",
+  "type": "object"
+}

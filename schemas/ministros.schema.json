@@ -1,0 +1,224 @@
+{
+  "$defs": {
+    "Fonte": {
+      "additionalProperties": false,
+      "properties": {
+        "titulo": {
+          "title": "Titulo",
+          "type": "string"
+        },
+        "revid": {
+          "title": "Revid",
+          "type": "integer"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "titulo",
+        "revid",
+        "url"
+      ],
+      "title": "Fonte",
+      "type": "object"
+    },
+    "Ministro": {
+      "additionalProperties": false,
+      "properties": {
+        "governo": {
+          "minLength": 1,
+          "title": "Governo",
+          "type": "string"
+        },
+        "orgao": {
+          "minLength": 1,
+          "title": "Orgao",
+          "type": "string"
+        },
+        "orgao_artigo": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Orgao Artigo"
+        },
+        "tipo": {
+          "enum": [
+            "Ministério",
+            "Órgão com status de ministério",
+            "Secretaria com status de ministério"
+          ],
+          "title": "Tipo",
+          "type": "string"
+        },
+        "nome": {
+          "minLength": 1,
+          "title": "Nome",
+          "type": "string"
+        },
+        "artigo": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Artigo"
+        },
+        "interino": {
+          "title": "Interino",
+          "type": "boolean"
+        },
+        "partido_sigla": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Partido Sigla"
+        },
+        "uf_origem": {
+          "anyOf": [
+            {
+              "enum": [
+                "AC",
+                "AL",
+                "AP",
+                "AM",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MT",
+                "MS",
+                "MG",
+                "PA",
+                "PB",
+                "PR",
+                "PE",
+                "PI",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SP",
+                "SE",
+                "TO"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Uf Origem"
+        },
+        "posse": {
+          "format": "date",
+          "title": "Posse",
+          "type": "string"
+        },
+        "saida": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Saida"
+        },
+        "em_exercicio": {
+          "title": "Em Exercicio",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "governo",
+        "orgao",
+        "orgao_artigo",
+        "tipo",
+        "nome",
+        "artigo",
+        "interino",
+        "partido_sigla",
+        "uf_origem",
+        "posse",
+        "saida",
+        "em_exercicio"
+      ],
+      "title": "Ministro",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "dataset": {
+      "title": "Dataset",
+      "type": "string"
+    },
+    "descricao": {
+      "title": "Descricao",
+      "type": "string"
+    },
+    "licenca": {
+      "default": "CC BY-SA 4.0 (conteúdo derivado da Wikipedia)",
+      "title": "Licenca",
+      "type": "string"
+    },
+    "gerado_em": {
+      "format": "date-time",
+      "title": "Gerado Em",
+      "type": "string"
+    },
+    "fontes": {
+      "items": {
+        "$ref": "#/$defs/Fonte"
+      },
+      "title": "Fontes",
+      "type": "array"
+    },
+    "dados": {
+      "items": {
+        "$ref": "#/$defs/Ministro"
+      },
+      "minItems": 1,
+      "title": "Dados",
+      "type": "array"
+    }
+  },
+  "required": [
+    "dataset",
+    "descricao",
+    "gerado_em",
+    "fontes",
+    "dados"
+  ],
+  "title": "ArquivoMinistro",
+  "type": "object"
+}

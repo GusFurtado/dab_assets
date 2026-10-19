@@ -40,3 +40,8 @@ def test_artigo():
     assert artigo("/wiki/Paulo_Dantas") == "Paulo Dantas"
     assert artigo("/wiki/Ficheiro:Foto.jpg") is None
     assert artigo("/w/index.php?title=X&action=edit&redlink=1") is None
+
+
+def test_data_numerica():
+    assert data("27/03/2007") == date(2007, 3, 27)
+    assert datas("09/12/2025 e 1 de março de 2020") == [date(2025, 12, 9), date(2020, 3, 1)]
